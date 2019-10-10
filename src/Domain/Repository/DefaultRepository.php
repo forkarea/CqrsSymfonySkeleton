@@ -12,4 +12,9 @@ class DefaultRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, DefaultEntity::class);
     }
+
+    public function save(DefaultEntity $entity){
+        $this->_em->persist($entity);
+        $this->_em->flush();
+    }
 }
