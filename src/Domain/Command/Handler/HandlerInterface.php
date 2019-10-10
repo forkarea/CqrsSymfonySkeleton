@@ -3,5 +3,5 @@
 namespace App\Domain\Command\Handler;
 
 interface HandlerInterface {
-    public function handle();
+    public function handle(string $content);
 }

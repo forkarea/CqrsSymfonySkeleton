@@ -6,8 +6,11 @@ use App\Domain\Command\Handler\HandlerInterface;
 
 class CreateHandler implements HandlerInterface
 {
-    public function handle()
+    public function __construct()
     {
+    }
 
+    public function handle(string $content)
+    {
     }
 }
