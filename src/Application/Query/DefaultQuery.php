@@ -15,7 +15,7 @@ class DefaultQuery implements QueryInterface
 {
     public function execute(Connection $connection, ?int $id = null): Statement
     {
-        $sql = 'SELECT * FROM test';
+        $sql = 'SELECT * FROM default_entity';
         $stmt = $connection->prepare($sql);
         $stmt->execute();
 
