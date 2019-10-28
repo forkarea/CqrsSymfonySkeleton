@@ -1,0 +1,45 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/php:7.3.9-fpm
+      - image: circleci/mysql:5.7.26
+        environment:
+          - MYSQL_ROOT_HOST: "%"
+          - MYSQL_USER: root
+          - MYSQL_DATABASE: cqrs
+          - MYSQL_ROOT_PASSWORD: root
+    steps:
+      - checkout
+      - run:
+          name: Install php mysql extension
+          command: sudo docker-php-ext-install pdo_mysql
+      - run:
+          name: Install dependencies
+          command: composer install
+      - run:
+          name: Update database
+          command: php bin/console --no-interaction doctrine:migrations:migrate
+      - run:
+          name: Run unit tests
+          command: php bin/phpunit
+#  deploy:
+#      docker:
+#        - image: buildpack-deps:trusty
+#      steps:
+#        - checkout
+#        - run:
+#            name: Deploy Master to Heroku
+#            command: |
+#              git push https://heroku:91248da9-f9e9-441b-ae8d-69f9f2283beb@git.heroku.com/desolate-refuge-00614.git production
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+#      - deploy:
+#          requires:
+#            - build
+#          filters:
+#            branches:
+#              only: production
