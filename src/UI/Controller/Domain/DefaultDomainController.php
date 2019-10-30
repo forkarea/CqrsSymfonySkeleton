@@ -16,7 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultDomainController extends AbstractController
 {
     private $commandBus;
-    private $handler;
 
     public function __construct(CommandBusInterface $commandBus)
     {
@@ -24,7 +23,7 @@ class DefaultDomainController extends AbstractController
     }
 
     /**
-     * @Route("/")
+     * @Route("/", methods={"POST"})
      */
     public function create(Request $request, CreateHandler $handler)
     {

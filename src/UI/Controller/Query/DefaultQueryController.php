@@ -39,7 +39,7 @@ class DefaultQueryController extends AbstractController
      * @Route("/", methods={"GET"})
      * @SWG\Response(
      *     response=200,
-     *     description="Returns all cities",
+     *     description="Returns all default data",
      *     @SWG\Schema(
      *         type="array",
      *         @SWG\Items(ref=@Model(type=DefaultEntity::class))
