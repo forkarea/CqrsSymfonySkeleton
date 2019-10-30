@@ -4,7 +4,7 @@ namespace App\Service;
 
 use JMS\Serializer\SerializerInterface;
 
-class JsonSerializerService
+class JsonSerializerService implements JsonSerializerServiceInterface
 {
     private $serializer;
 
