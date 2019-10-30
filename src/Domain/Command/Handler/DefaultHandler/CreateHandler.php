@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Command\DefaultHandler;
+namespace App\Domain\Command\Handler\DefaultHandler;
 
 use App\Domain\Command\Handler\HandlerInterface;
 use App\Domain\Entity\DefaultEntity;

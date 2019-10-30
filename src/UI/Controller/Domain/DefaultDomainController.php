@@ -3,7 +3,7 @@
 namespace App\UI\Controller\Domain;
 
 use App\Domain\Command\CommandBusInterface;
-use App\Domain\Command\DefaultHandler\CreateHandler;
+use App\Domain\Command\Handler\DefaultHandler\CreateHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,7 +18,6 @@ class DefaultDomainController extends AbstractController
     private $commandBus;
     private $handler;
 
-
     public function __construct(CommandBusInterface $commandBus)
     {
         $this->commandBus = $commandBus;
@@ -27,8 +26,8 @@ class DefaultDomainController extends AbstractController
     /**
      * @Route("/")
      */
-    public function create(Request $request)
+    public function create(Request $request, CreateHandler $handler)
     {
-        $this->commandBus->handle(new CreateHandler());
+        $this->commandBus->handle($handler, $request->getContent());
     }
 }

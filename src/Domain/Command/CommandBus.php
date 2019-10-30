@@ -6,8 +6,8 @@ use App\Domain\Command\Handler\HandlerInterface;
 
 class CommandBus implements CommandBusInterface
 {
-    public function handle(HandlerInterface $handler)
+    public function handle(HandlerInterface $handler, string $content)
     {
-        $handler->handle();
+        $handler->handle($content);
     }
 }
