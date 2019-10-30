@@ -18,6 +18,9 @@ jobs:
           name: Install dependencies
           command: composer install
       - run:
+          name: Copy .env.dist to .env
+          command: cp .env.dist .env
+      - run:
           name: Update database
           command: php bin/console --no-interaction doctrine:migrations:migrate
       - run:
